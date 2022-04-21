@@ -75,3 +75,7 @@ Learn more about the power of Turborepo:
 - [Scoped Tasks](https://turborepo.org/docs/features/scopes)
 - [Configuration Options](https://turborepo.org/docs/reference/configuration)
 - [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
+
+## My Useful Links
+
+- [Pitfalls When Adding Turborepo To Your Project](https://dev.to/_gdelgado/pitfalls-when-adding-turborepo-to-your-project-4cel)

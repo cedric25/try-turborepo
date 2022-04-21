@@ -1,0 +1,24 @@
+{
+  "name": "bo-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -w",
+    "dev": "nodemon dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@trpc/server": "^9.22.0",
+    "fastify": "^3.28.0",
+    "fastify-cors": "^6.0.3",
+    "zod": "^3.14.4"
+  },
+  "devDependencies": {
+    "config": "*",
+    "nodemon": "^2.0.15",
+    "tsconfig": "*"
+  }
+}

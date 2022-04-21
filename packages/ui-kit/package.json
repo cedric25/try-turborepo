@@ -1,0 +1,14 @@
+{
+  "name": "ui-kit",
+  "version": "0.0.0",
+  "main": "./index.js",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.2.33"
+  },
+  "devDependencies": {
+    "tsconfig": "*",
+    "config": "*",
+    "typescript": "~4.6.3"
+  }
+}
