@@ -6,6 +6,7 @@ const plugin: FastifyPluginAsync = async instance => {
     instance.register(fruitRoutes, { prefix: '/fruits' })
 
     instance.all('*', async () => {
+      // @ts-ignore
       throw instance.httpErrors.notFound(`this route doesn't exist`)
     })
   })

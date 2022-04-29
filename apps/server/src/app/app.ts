@@ -10,6 +10,7 @@ export default (): FastifyInstance => {
     // genReqId,
   })
 
+  // @ts-ignore
   app.register(plugins)
 
   app.get('/', async () => {
