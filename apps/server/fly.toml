@@ -1,7 +1,0 @@
-app = "turbo-server"
-
-[build]
-  builder = "heroku/buildpacks:20"
-
-[experimental]
-  cmd = "npm start"
