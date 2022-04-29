@@ -1,0 +1,22 @@
+{
+  "name": "freely-prisma",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Cedric Nicoloso <cedric.nicoloso@gmail.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "postinstall": "run-s generate build",
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.build.json --declaration",
+    "generate": "yarn prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "3.9.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "4.1.5",
+    "prisma": "3.9.1",
+    "typescript": "4.6.3"
+  }
+}

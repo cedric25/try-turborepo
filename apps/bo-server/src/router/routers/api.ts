@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { createRouter } from "../createRouter";
+import { goCreateFruitInDb } from "../../goCreateFruitInDb";
 
 export const apiRouter = createRouter()
   .query("version", {
@@ -14,8 +15,19 @@ export const apiRouter = createRouter()
       })
       .nullish(),
     resolve({ input, ctx }) {
+      console.log("hello Called");
       return {
         text: `hello ${input?.username ?? ctx.user?.name ?? "world"}`,
       };
+    },
+  })
+  .mutation("create", {
+    input: z.object({
+      name: z.string(),
+      color: z.string(),
+    }),
+    resolve({ input, ctx }) {
+      console.log("input", input);
+      return goCreateFruitInDb(input);
     },
   });

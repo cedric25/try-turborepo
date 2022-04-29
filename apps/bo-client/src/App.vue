@@ -14,8 +14,13 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <Button />
+        <Button>Bonjour test</Button>
       </nav>
+
+      <div>
+        name: 'Banana', color: 'yellow'
+        <Button @click="doCreateFruit">Create fruit</Button>
+      </div>
     </div>
   </header>
 
@@ -28,9 +33,15 @@ import HelloWorld from "@/components/HelloWorld.vue";
 
 import { Button } from "ui-kit";
 
-import { callStuff } from "@/services/callStuff";
+import { callStuff, goCreateFruit } from "@/services/callStuff";
 
 callStuff();
+
+async function doCreateFruit() {
+  console.log("doCreateFruit");
+  const backendAnswer = await goCreateFruit();
+  console.log("backendAnswer", backendAnswer);
+}
 </script>
 
 <style>

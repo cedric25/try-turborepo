@@ -35,6 +35,20 @@ export declare const appRouter: import("@trpc/server/dist/declarations/src/route
     text: string;
 }, unknown, {
     text: string;
-}>>, {}, {}, import("@trpc/server").DefaultErrorShape>;
+}>>, Record<"create", import("@trpc/server/dist/declarations/src/internals/procedure").Procedure<{
+    req: import("fastify").FastifyRequest<import("fastify/types/route").RouteGenericInterface, import("http").Server, import("http").IncomingMessage, unknown, import("fastify").FastifyLoggerInstance>;
+    res: import("fastify").FastifyReply<import("http").Server, import("http").IncomingMessage, import("http").ServerResponse, import("fastify/types/route").RouteGenericInterface, unknown>;
+    user: import("./context").User;
+}, {
+    req: import("fastify").FastifyRequest<import("fastify/types/route").RouteGenericInterface, import("http").Server, import("http").IncomingMessage, unknown, import("fastify").FastifyLoggerInstance>;
+    res: import("fastify").FastifyReply<import("http").Server, import("http").IncomingMessage, import("http").ServerResponse, import("fastify/types/route").RouteGenericInterface, unknown>;
+    user: import("./context").User;
+}, {}, {
+    name: string;
+    color: string;
+}, {
+    name: string;
+    color: string;
+}, import("freely-prisma").Fruit, unknown, import("freely-prisma").Fruit>>, {}, import("@trpc/server").DefaultErrorShape>;
 export declare type AppRouter = typeof appRouter;
 //# sourceMappingURL=index.d.ts.map
