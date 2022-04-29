@@ -7,3 +7,8 @@ Example:
 ```
 npm i fastify-cors -w=bo-server
 ```
+
+ - Using 'tsc-alias' instead of 'tsconfig-paths'
+All imports using an alias will be changed to relative imports -> Less problems then for node to run dist.
+Well, no so simple, it works well when running the server, but not for running tests?!
+Add back 'tsconfig-paths' for now...
