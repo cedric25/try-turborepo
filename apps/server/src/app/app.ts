@@ -6,7 +6,7 @@ export default (): FastifyInstance => {
   const app = fastify({
     // ignoreTrailingSlash: true,
     // disableRequestLogging: true,
-    // logger,
+    logger: true,
     // genReqId,
   })
 
