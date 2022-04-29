@@ -3,6 +3,5 @@ app = "turbo-server"
 [build]
   builder = "heroku/buildpacks:20"
 
-[[services]]
-  internal_port = 8080
-  protocol = "tcp"
+[experimental]
+  cmd = "npm start"

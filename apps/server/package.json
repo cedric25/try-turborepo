@@ -4,7 +4,8 @@
   "private": true,
   "author": "Cedric Nicoloso <cedric.nicoloso@gmail.com>",
   "engines": {
-    "node": "=16"
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
   },
   "scripts": {
     "watch": "tsc -w & tsc-alias -w",
