@@ -9,7 +9,7 @@
     "postinstall": "run-s generate build",
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.build.json --declaration",
-    "generate": "yarn prisma generate"
+    "generate": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "3.9.1"
