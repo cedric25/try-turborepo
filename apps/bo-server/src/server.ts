@@ -4,7 +4,7 @@ import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
 import { appRouter } from "./router";
 import { createContext } from "./router/context";
 
-const PORT = 3011;
+const PORT = process.env.PORT || 3011;
 
 export function createServer() {
   const server = fastify();
@@ -36,8 +36,8 @@ export function createServer() {
   const stop = () => server.close();
   const start = async () => {
     try {
-      await server.listen(PORT);
-      console.log("listening on port", PORT);
+      const address = await server.listen(PORT, '0.0.0.0');
+      console.log(`bo-server listening at ${address}`);
     } catch (err) {
       server.log.error(err);
       process.exit(1);
