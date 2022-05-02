@@ -6,7 +6,9 @@
   "scripts": {
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js",
-    "test": "NODE_ENV=test mocha --config .mocharc.unit.js"
+    "test": "NODE_ENV=test mocha --config .mocharc.unit.js",
+    "prettier": "prettier src --check",
+    "prettier:fix": "prettier src --write"
   },
   "keywords": [],
   "author": "",

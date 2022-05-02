@@ -2,6 +2,8 @@
   "$schema": "https://turborepo.org/schema.json",
   "baseBranch": "origin/master",
   "pipeline": {
+    "prettier": {},
+    "prettier:fix": {},
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
