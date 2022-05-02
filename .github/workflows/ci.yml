@@ -2,7 +2,11 @@ name: CI
 
 on:
   push:
-    branches: ["now-to-heroku"]
+    branches:
+      - "now-to-heroku"
+    paths:
+      - "apps/server/**"
+      - ".github/workflows/ci.yml"
 
 jobs:
   build:
@@ -35,9 +39,10 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Deploy server
-        uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Add backend remote origin
+        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_BACKEND_APP_NAME }}.git
+
+      - name: Deploy backend to Heroku
+        run: git push heroku `git subtree split --prefix apps/server now-to-heroku`:refs/heads/master --force
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "ced-server-preprod"
-          heroku_email: ${{secrets.HEROKU_API_KEY}}
+          HEROKU_BACKEND_APP_NAME: "ced-server-preprod"
