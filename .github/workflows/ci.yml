@@ -6,6 +6,7 @@ on:
       - "now-to-heroku"
     paths:
       - "apps/server/**"
+      - "packages/freely-prisma/**"
       - ".github/workflows/ci.yml"
 
 jobs:
