@@ -41,5 +41,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "ced-server-preprod"
           heroku_email: ${{secrets.HEROKU_API_KEY}}
-        env:
-          HD_APP_BASE: "apps/server"
