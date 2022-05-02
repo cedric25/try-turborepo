@@ -1,5 +1,5 @@
 import { notFound } from '@hapi/boom'
-import { Prisma, type Fruit, type Toto } from 'freely-prisma'
+import { Prisma, type Fruit } from 'freely-prisma'
 import type { FruitDao } from '@/modules/fruit/dao/fruit.dao'
 import { fruitDi } from '@/modules/fruit/fruit.di'
 
