@@ -1,4 +1,6 @@
-import { prismaClient } from "freely-prisma";
+import { PrismaClient } from "freely-prisma";
+
+const prismaClient: PrismaClient = new PrismaClient();
 
 export function goCreateFruitInDb({
   name,
