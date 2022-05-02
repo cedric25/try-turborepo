@@ -10,7 +10,7 @@
   "scripts": {
     "watch": "tsc -w & tsc-alias -w",
     "dev": "nodemon -r source-map-support/register dist/server.js",
-    "build": "rimraf ./dist && (tsc -p tsconfig.build.json || exit 0) && tsc-alias -p tsconfig.build.json",
+    "build": "rimraf ./dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "start": "node dist/server.js",
     "test": "NODE_ENV=test mocha --config .mocharc.unit.js",
     "lint": "npm run prettier",
