@@ -9,7 +9,6 @@
     "postinstall": "run-s generate build",
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.build.json --declaration",
-    "prepare": "npx prisma generate",
     "generate": "prisma generate"
   },
   "dependencies": {
