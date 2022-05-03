@@ -29,7 +29,7 @@ export function createServer() {
     '/hello',
     async ({ body }) => {
       console.log('-> BODY:', typeof body, body)
-      return { hello: 'POST', body }
+      return { hello: 'POSTTT', body }
     }
   )
 
