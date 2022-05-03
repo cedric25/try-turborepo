@@ -41,7 +41,7 @@ jobs:
         run: npx turbo run test --filter=server...
 
       - name: prisma migrate deploy
-        run: npx prisma migrate deploy
+        run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
 
       - name: Deploy server to Heroku
         uses: formsort/action-heroku-deploy@v1
