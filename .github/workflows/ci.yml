@@ -46,7 +46,7 @@ jobs:
       - name: Edit build script
         run: sed 's/turbo run build/npx turbo run build --filter=server.../g' package.json
 
-      - name: Deploy server to Heroku
+      - name: Deploy server to Herokuu
         uses: formsort/action-heroku-deploy@v1
         with:
           github_repo: ${{ github.repository }}
