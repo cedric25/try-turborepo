@@ -43,6 +43,9 @@ jobs:
       - name: prisma migrate deploy
         run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
 
+      - name: Edit build script
+        run: sed -i "" 's/turbo run build/npx turbo run build --filter=server.../g' package.json
+
       - name: Deploy server to Heroku
         uses: formsort/action-heroku-deploy@v1
         with:
