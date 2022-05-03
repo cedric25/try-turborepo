@@ -1,1 +1,1 @@
-web: npx turbo run start -w=$APP_NAME
+web: npx turbo run start --filter=$APP_NAME
