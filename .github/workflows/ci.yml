@@ -48,7 +48,7 @@ jobs:
           FILE_NAME: "Procfile"
           FILE_DATA: "web: npx turbo start -w=server"
 
-      - name: Deploy server to Herokuu
+      - name: Deploy server to Heroku
         uses: formsort/action-heroku-deploy@v1
         with:
           github_repo: ${{ github.repository }}
