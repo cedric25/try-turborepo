@@ -1,4 +1,4 @@
-name: CI
+name: preprod-server
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build, Test and Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 15
     # To use Remote Caching, uncomment the next lines and follow the steps below.
@@ -43,7 +43,7 @@ jobs:
       - name: prisma migrate deploy
         run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
 
-      - name: Deploy server to Herokuu
+      - name: Deploy server to Heroku
         uses: formsort/action-heroku-deploy@v1
         with:
           github_repo: ${{ github.repository }}
