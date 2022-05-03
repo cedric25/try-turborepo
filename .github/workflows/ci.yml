@@ -43,7 +43,7 @@ jobs:
       - name: prisma migrate deploy
         run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
 
-      - name: Deploy server to Heroku
+      - name: Deploy server to Herokuu
         uses: formsort/action-heroku-deploy@v1
         with:
           github_repo: ${{ github.repository }}
