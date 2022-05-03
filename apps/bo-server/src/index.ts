@@ -1,5 +1,5 @@
-import { createServer } from "./server";
+import { createServer } from './server'
 
-const server = createServer();
+const server = createServer()
 
-server.start();
+server.start()

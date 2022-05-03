@@ -1,6 +1,7 @@
-import type { PrismaClient } from '@prisma/client'
 import plugin from 'fastify-plugin'
-import { prismaClient } from 'freely-prisma'
+import { PrismaClient } from 'freely-prisma'
+
+export const prismaClient: PrismaClient = new PrismaClient()
 
 declare module 'fastify' {
   interface FastifyInstance {

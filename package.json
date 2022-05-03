@@ -12,9 +12,10 @@
   },
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "turbo run build --filter=server...",
-    "start": "node apps/server/dist/server.js",
-    "lint": "turbo run lint",
+    "build": "turbo run build",
+    "heroku-postbuild": "npx turbo run build --filter=$APP_NAME...",
+    "prettier": "turbo run prettier",
+    "prettier:fix": "turbo run prettier:fix",
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

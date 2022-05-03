@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - "apps/server/**"
+      - "packages/freely-prisma/**"
+      - ".github/workflows/preprod-server.yml"
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # To use Remote Caching, uncomment the next lines and follow the steps below.
+    # env:
+    #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    #  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npx turbo run build --filter=server...
+
+      - name: Test
+        run: npx turbo run test --filter=server...
+
+      - name: prisma migrate deploy
+        run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
+
+      - name: Deploy server to Herokuu
+        uses: formsort/action-heroku-deploy@v1
+        with:
+          github_repo: ${{ github.repository }}
+          github_token: ${{ github.token }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ced-server-preprod
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
