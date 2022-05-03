@@ -43,11 +43,6 @@ jobs:
       - name: prisma migrate deploy
         run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
 
-      - uses: "finnp/create-file-action@master"
-        env:
-          FILE_NAME: "Procfile"
-          FILE_DATA: "web: npx turbo start -w=server"
-
       - name: Deploy server to Heroku
         uses: formsort/action-heroku-deploy@v1
         with:
