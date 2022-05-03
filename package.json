@@ -1,7 +1,8 @@
 {
-  "name": "turborepo-basic-shared",
-  "version": "0.0.0",
+  "name": "try-turborepo",
+  "version": "0.0.1",
   "private": true,
+  "author": "Cedric Nicoloso <cedric.nicoloso@gmail.com>",
   "workspaces": [
     "apps/*",
     "packages/*"

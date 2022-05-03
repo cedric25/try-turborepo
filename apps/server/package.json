@@ -2,11 +2,6 @@
   "name": "server",
   "version": "0.0.1",
   "private": true,
-  "author": "Cedric Nicoloso <cedric.nicoloso@gmail.com>",
-  "engines": {
-    "node": "16.x",
-    "npm": "8.x"
-  },
   "scripts": {
     "watch": "tsc -w & tsc-alias -w",
     "dev": "nodemon -r source-map-support/register dist/server.js",

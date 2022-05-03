@@ -1,8 +1,7 @@
 {
   "name": "bo-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js",
