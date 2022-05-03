@@ -32,13 +32,16 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --filter=server...
 
       - name: Build
-        run: npm run build
+        run: turbo run build --filter=server...
 
       - name: Test
-        run: npm run test
+        run: turbo run test --filter=server...
+
+      - name: prisma migrate deploy
+        run: prisma migrate deploy
 
       - name: Deploy server to Heroku
         uses: formsort/action-heroku-deploy@v1
