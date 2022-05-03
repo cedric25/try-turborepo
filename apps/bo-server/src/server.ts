@@ -28,7 +28,7 @@ export function createServer() {
   server.post<{ Body: { text: string; life: number } }>(
     '/hello',
     async ({ body }) => {
-      console.log('BODY:', typeof body, body)
+      console.log('-> BODY:', typeof body, body)
       return { hello: 'POST', body }
     }
   )
