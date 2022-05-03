@@ -1,1 +1,1 @@
-web: npx turbo run start -w=server
+web: npx turbo run start -w=$APP_NAME
