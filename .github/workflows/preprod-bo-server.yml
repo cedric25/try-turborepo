@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - "now-to-heroku"
+      - "master"
     paths:
-      - "apps/server/**"
+      - "apps/bo-server/**"
       - "packages/freely-prisma/**"
-      - ".github/workflows/ci.yml"
+      - ".github/workflows/preprod-bo-server.yml"
 
 jobs:
   build:
@@ -35,22 +35,19 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npx turbo run build --filter=server...
+        run: npx turbo run build --filter=bo-server...
 
       - name: Test
-        run: npx turbo run test --filter=server...
+        run: npx turbo run test --filter=bo-server...
 
       - name: prisma migrate deploy
         run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
 
-      - name: Edit build script
-        run: sed 's/turbo run build/npx turbo run build --filter=server.../g' package.json
-
-      - name: Deploy server to Herokuu
+      - name: Deploy bo-server to Herokuu
         uses: formsort/action-heroku-deploy@v1
         with:
           github_repo: ${{ github.repository }}
           github_token: ${{ github.token }}
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ced-server-preprod
+          heroku_app_name: ced-bo-server-preprod
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
