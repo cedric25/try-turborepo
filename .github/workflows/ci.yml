@@ -32,13 +32,13 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --filter=server...
+        run: npm install
 
       - name: Build
-        run: turbo run build --filter=server...
+        run: npx turbo run build --filter=server...
 
       - name: Test
-        run: turbo run test --filter=server...
+        run: npx turbo run test --filter=server...
 
       - name: prisma migrate deploy
         run: prisma migrate deploy
