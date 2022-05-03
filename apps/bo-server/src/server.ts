@@ -1,4 +1,5 @@
 import fastify from 'fastify'
+// @ts-ignore
 import cors from 'fastify-cors'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import { appRouter } from './router'
@@ -44,5 +45,5 @@ export function createServer() {
     }
   }
 
-  return { server, start, stop }
+  return { start, stop }
 }
