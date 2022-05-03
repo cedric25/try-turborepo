@@ -1,0 +1,79 @@
+name: Heroku Review Application
+on:
+  pull_request:
+
+env:
+  APP_NAME: ced-server
+
+jobs:
+  heroku-review-application:
+    if: contains(github.event.pull_request.labels.*.name, 'heroku-prapp')
+    name: Heroku Review Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: prepare vars
+        id: vars
+        run: |
+          pipeline_id=$(curl -sSL --netrc https://api.heroku.com/apps/${APP_NAME}-preprod/pipeline-couplings \
+          -H "Accept: application/vnd.heroku+json; version=3" | jq '.pipeline.id')
+          echo "::set-output name=pipeline_id::${pipeline_id}"
+          echo "::set-output name=branch::$(echo ${GITHUB_HEAD_REF##*/})"
+
+      - name: deploy pr app on Heroku
+        env:
+          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_PIPELINE_ID: ${{ steps.vars.outputs.pipeline_id }}
+          PR_NUMBER: ${{ github.event.number }}
+          BRANCH: ${{ steps.vars.outputs.branch }}
+        run: |
+          generate_json()
+          {
+            cat <<EOF
+          {
+              "branch": "${BRANCH}",
+              "pr_number": ${PR_NUMBER},
+              "pipeline": ${HEROKU_PIPELINE_ID},
+              "source_blob": {
+                  "url": "https://api.github.com/repos/${GITHUB_REPOSITORY}/tarball/${BRANCH}",
+                  "version": "${GITHUB_SHA}"
+              }
+          }
+          EOF
+          }
+
+          get_review_app_id(){
+            echo $(curl -n https://api.heroku.com/apps/${APP_NAME}--pr-${PR_NUMBER}/review-app -H "Accept: application/vnd.heroku+json; version=3" | jq '.id' |  tr -d '"')
+          }
+          
+          # get review app ID if it exists
+          id=$(get_review_app_id)
+          if [ "${id}" != "null" ]
+          then
+            # delete review app by ID
+            curl -n -X DELETE https://api.heroku.com/review-apps/$id \
+              -H "Content-Type: application/json" \
+              -H "Accept: application/vnd.heroku+json; version=3"
+
+              # wait for the app to be deleted
+              i=0              
+              printf "Waiting for the app to be deleted..."
+              while [ $i -lt 60 ]
+              do
+                id=$(get_review_app_id)
+                if [ "${id}" != "null" ]
+                then
+                  printf "."
+                  let "i+=10"
+                  sleep 10
+                else
+                  printf "Done\n"
+                  break
+                fi
+              done
+          fi
+
+          # deploy review app
+          curl -n -X POST https://api.heroku.com/review-apps \
+          -d  "$(generate_json)" \
+          -H "Content-Type: application/json" \
+          -H "Accept: application/vnd.heroku+json; version=3"
