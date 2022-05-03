@@ -12,8 +12,7 @@
   },
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "turbo run build --filter=server...",
-    "start": "node apps/server/dist/server.js",
+    "build": "turbo run build",
     "prettier": "turbo run prettier",
     "prettier:fix": "turbo run prettier:fix",
     "test": "turbo run test",
