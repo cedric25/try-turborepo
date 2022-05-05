@@ -17,8 +17,7 @@
     "heroku-postbuild": "npx turbo run build --filter=$APP_NAME...",
     "prettier": "turbo run prettier",
     "prettier:fix": "turbo run prettier:fix",
-    "test": "turbo run test",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test": "turbo run test"
   },
   "devDependencies": {
     "prettier": "2.6.2",
