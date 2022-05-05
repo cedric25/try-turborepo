@@ -26,7 +26,7 @@ export const apiRouter = createRouter()
       name: z.string(),
       color: z.string(),
     }),
-    resolve({ input, ctx }) {
+    resolve({ input }) {
       console.log('input', input)
       return goCreateFruitInDb(input)
     },
