@@ -14,12 +14,31 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <Button>Bonjour test</Button>
       </nav>
 
       <div>
-        name: 'Banana', color: 'yellow'
-        <Button @click="doCreateFruit">Create fruit</Button>
+        <div>
+          <p>
+            bo-client will call bo-server through trpc.<br />
+            bo-server will then go fetch fruits from a SQLite database through
+            Prisma client.
+          </p>
+          <Button @click="listFruits"> List existing fruits </Button>
+          <div>
+            <div v-for="fruit in fruits">
+              {{ fruit }}
+            </div>
+          </div>
+        </div>
+
+        <!--        <div>-->
+        <!--          <Button @click="deleteBanana"> Delete banana </Button>-->
+        <!--        </div>-->
+
+        <div style="margin-top: 24px">
+          name: 'Banana', color: 'yellow'
+          <Button @click="doCreateFruit">Create fruit</Button>
+        </div>
       </div>
     </div>
   </header>
@@ -28,24 +47,33 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
+import { ref } from 'vue'
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from '@/components/HelloWorld.vue'
 
-import { Button } from "ui-kit";
+import { Button } from 'ui-kit'
 
-import { callStuff, goCreateFruit } from "@/services/callStuff";
+import { callStuff, goCreateFruit, goListFruits } from '@/services/callStuff'
 
-callStuff();
+callStuff()
+
+const fruits = ref([])
+
+async function listFruits() {
+  const backendAnswer = await goListFruits()
+  console.log('backendAnswer', backendAnswer)
+  fruits.value = backendAnswer
+}
 
 async function doCreateFruit() {
-  console.log("doCreateFruit");
-  const backendAnswer = await goCreateFruit();
-  console.log("backendAnswer", backendAnswer);
+  console.log('doCreateFruit')
+  const backendAnswer = await goCreateFruit()
+  console.log('backendAnswer', backendAnswer)
 }
 </script>
 
 <style>
-@import "@/assets/base.css";
+@import '@/assets/base.css';
 
 #app {
   max-width: 1280px;

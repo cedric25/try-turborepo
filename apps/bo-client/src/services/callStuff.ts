@@ -19,3 +19,7 @@ export function goCreateFruit() {
     color: 'Yellow',
   })
 }
+
+export function goListFruits() {
+  return client.query('list-fruits')
+}

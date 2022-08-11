@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import { createRouter } from '../createRouter'
 import { goCreateFruitInDb } from '../../goCreateFruitInDb'
+import { goListFruitsInDb } from '../../goListFruitsInDb'
 
 export const apiRouter = createRouter()
   .query('version', {
@@ -29,5 +30,11 @@ export const apiRouter = createRouter()
     resolve({ input }) {
       console.log('input', input)
       return goCreateFruitInDb(input)
+    },
+  })
+  .query('list-fruits', {
+    resolve() {
+      console.log('list-fruits')
+      return goListFruitsInDb()
     },
   })
