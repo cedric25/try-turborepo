@@ -7,6 +7,7 @@ on:
     paths:
       - "apps/server/**"
       - "packages/freely-prisma/**"
+      - "packages/tsconfig/**"
       - ".github/workflows/preprod-server.yml"
 
 jobs:
