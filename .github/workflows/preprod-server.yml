@@ -44,10 +44,8 @@ jobs:
         run: npx prisma migrate deploy --schema ./packages/freely-prisma/schema.prisma
 
       - name: Deploy server to Heroku
-        uses: formsort/action-heroku-deploy@v1
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          github_repo: ${{ github.repository }}
-          github_token: ${{ github.token }}
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ced-server-preprod
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "ced-server-preprod"
+          heroku_email: "cedric.nicoloso@gmail.com"
