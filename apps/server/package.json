@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "watch": "tsc -w & tsc-alias -w",
-    "dev": "nodemon -r source-map-support/register dist/server.js",
+    "dev": "npm run watch & nodemon -r source-map-support/register dist/server.js",
     "build": "rimraf ./dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "start": "node dist/server.js",
     "test": "NODE_ENV=test mocha --config .mocharc.unit.js",
@@ -37,7 +37,7 @@
     "mocha": "^9.2.2",
     "nodemon": "2.0.15",
     "source-map-support": "0.5.21",
-    "tsc-alias": "^1.6.7",
+    "tsc-alias": "^1.7.0",
     "tsconfig": "*",
     "tsconfig-paths": "^3.14.1",
     "typescript": "4.6.3"

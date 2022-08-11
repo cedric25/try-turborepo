@@ -2,6 +2,10 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
+    "lib": ["ES2020"],
+    "module": "CommonJS",
+    "target": "ES2020",
+
     "allowJs": true,
     "composite": false,
     "declaration": true,
@@ -11,8 +15,6 @@
     "incremental": true,
     "inlineSources": false,
     "isolatedModules": true,
-    "lib": ["ES2021"],
-    "module": "ESNext",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
